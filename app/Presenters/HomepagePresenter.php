@@ -18,6 +18,8 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
 
     public function renderDefault(): void
     {
-        $this->template->posts = $this->database->table('posts');
+        $this->template->posts = $this->database->table('posts')
+            ->order('created_at DESC')
+            ->limit(5);
     }
 }
